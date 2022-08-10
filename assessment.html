@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:url" content="https://fuuchin.github.io/assessment/assessment.html">
+    <meta property="og:title" content="あなたのいいところ診断">
+    <meta property="og:description" content="お手軽プログラミングコンテストで制作した、「あなたのいいところ診断 改変」サイトです。">
+    <meta property ="og:image" content="https://raw.githubusercontent.com/fuuchin/assessment-for-download/gh-pages/img/icon.jpg">
+    <link rel="stylesheet" href="assessment.css">
+    <link rel="shortcut icon" href="./img/icon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap" rel="stylesheet">
+    <title>あなたのいいところ診断</title>
+  </head>
+  <body>
+    <h1>あなたのいいところを診断します</h1>
+    <input type="text" id="user-name" size="40" maxlength="60" placeholder="診断したい名前を入力してください。">
+    <button id="assessment">診断する</button>
+    <div id="result-style">
+      <div id="result-area">
+        <div id="wkwk" style="display: block;">何が出るかな？<br>wkwk</div>
+        <h3 id="result-header" class="header-style" style="display: none;">診断結果</h3>
+        <!-- あなたのいいところはーーーです。あなたのーーーが～～～～～です。 -->
+        <p id="result-paragraph" class="paragraph-style" style="display: none;"></p>
+        <!-- おみくじなど -->
+        <p id="other-paragraph" class="other" style="display: none;"></p>
+      </div>
+      <div id="tweet-area"></div>
+    </div>
+    <!-- Scratch -->
+    <div id="scratch" style="display: none;">
+      <p>こちらもどうぞ</p>
+      <a href="https://scratch.mit.edu/projects/632524404" target="_blank" id="scratch-link">Scratchバージョン</a>
+    </div>
+    <script src="assessment.js"></script>
+  </body>
+</html>

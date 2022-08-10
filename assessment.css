@@ -1,0 +1,139 @@
+* {
+  font-family: 'Kiwi Maru', serif;
+}
+
+body {
+  text-align: center;
+  background: linear-gradient(90deg, #04a6eb, #7490eb);
+  color: #fdffff;
+}
+
+button {
+  margin-left: 10px;
+  padding-bottom: 3px;
+  border-radius: 2px;
+  font-size: 20px;
+  background: #ee500f;
+  color: #fdffff;
+  border: none;
+  border-radius: 5px;
+  width: 140px;
+  height: 46px;
+  /* 影 */
+  box-shadow: 3px 3px 2px #28193d;
+  transition: 300ms;
+}
+
+button:hover {
+  /* マウスを上に載せたら */
+  background: #f88400;
+}
+
+button:active {
+  /*ボタンが押されている間*/
+  box-shadow: none;
+  transform: translate(1px, 2px);
+}
+
+input {
+  width: 50%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 5px;
+  min-height: 1rem;
+  font-size: 1.2rem;
+  /* 影 */
+  box-shadow: 3.5px 3.5px 2px #261d46;
+  transition: 300ms;
+}
+
+input:focus {
+  /*入力欄にフォーカスしたときに*/
+  border: none;
+  outline: 0;
+}
+
+input:active {
+  /* 影を消す */
+  box-shadow: none;
+  transform: translate(1px, 2px);
+}
+
+input::placeholder{
+  padding-left: 7px;
+  transition: 300ms;
+  color: #aab;
+}
+
+.header-style {
+  font-size: 50px;
+}
+
+.paragraph-style {
+  margin: 10px;
+  background: #addf5c;
+  font-size: 20px;
+  color: #0141ef;
+  border: 2px dashed #61c150;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#result-style {
+  margin: 20px 10%;
+  background: #fddf5c;
+  color: #0141ef;
+  border: none;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.anspng {
+  width: 400px;
+}
+
+strong {
+  color: #008000;
+  background: #a9f800;
+  padding: 2px;
+}
+
+.other {
+  margin: 10px;
+  background: #7096e9;
+  font-size: 20px;
+  color: #dfef01;
+  border: 2px dashed #5c86df;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.omikuji-result {
+  font-weight: 900;
+  color: #eec50f;
+}
+
+#scratch-link {
+  padding: 10px 15px;
+  width: 10px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  background: #e52b2c;
+  color: #fff;
+  /* 影 */
+  box-shadow: 3px 3px 2px #28193d;
+  transition: 300ms;
+}
+
+#scratch-link:hover {
+  /* マウスを上に載せたら */
+  background: #f55353;
+}
+
+#scratch-link:active {
+  /* 影を消す */
+  box-shadow: none;
+  transform: translate(1px, 2px);
+}
