@@ -8,7 +8,7 @@ body {
   color: #fdffff;
 }
 
-button {
+#assessment {
   margin-left: 10px;
   padding-bottom: 3px;
   border-radius: 2px;
@@ -24,12 +24,12 @@ button {
   transition: 300ms;
 }
 
-button:hover {
+#assessment:hover {
   /* マウスを上に載せたら */
   background: #f88400;
 }
 
-button:active {
+#assessment:active {
   /*ボタンが押されている間*/
   box-shadow: none;
   transform: translate(1px, 2px);
@@ -114,6 +114,10 @@ strong {
   color: #eec50f;
 }
 
+#scratch {
+  margin-bottom: 50px;
+}
+
 #scratch-link {
   padding: 10px 15px;
   width: 10px;
@@ -136,4 +140,45 @@ strong {
   /* 影を消す */
   box-shadow: none;
   transform: translate(1px, 2px);
+}
+
+.btn2 {
+  margin-left: 10px;
+  padding-bottom: 3px;
+  border-radius: 2px;
+  font-size: 15px;
+  background: #01c30e;
+  color: #fdffff;
+  border: none;
+  border-radius: 5px;
+  width: 120px;
+  height: 30px;
+  /* 影 */
+  box-shadow: 3px 3px 2px #28193d;
+  transition: 300ms;
+}
+
+.btn2:hover {
+  /* マウスを上に載せたら */
+  background: #00f808;
+}
+
+.btn2:active {
+  /*ボタンが押されている間*/
+  box-shadow: none;
+  transform: translate(1px, 2px);
+}
+
+.input2 {
+  margin: 5px;
+}
+
+#user-area {
+  display: none;
+}
+#login-area {
+  display: none;
+}
+#register-area {
+  display: none;
 }

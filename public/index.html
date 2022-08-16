@@ -7,7 +7,7 @@
     <meta property="og:title" content="あなたのいいところ診断">
     <meta property="og:description" content="お手軽プログラミングコンテストで制作した、「あなたのいいところ診断 改変」サイトです。">
     <meta property ="og:image" content="https://raw.githubusercontent.com/fuuchin/assessment-for-download/gh-pages/img/icon.jpg">
-    <link rel="stylesheet" href="assessment.css">
+    <link rel="stylesheet" href="assessment.css?20228161950">
     <link rel="shortcut icon" href="./img/icon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,7 @@
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-analytics.js";
+      import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-auth.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
     
@@ -37,6 +38,80 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
+      const auth = getAuth();
+      
+      // 新規会員登録処理
+      const registerForm = document.getElementById('register-form');
+      const registerMailAddressInput = document.getElementById('registerMailAddress');
+      const registerPasswordInput = document.getElementById('registerPassword');
+      registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const mailAddress = registerMailAddressInput.value;
+        const password = registerPasswordInput.value;
+        if (!mailAddress || !password) {
+          return;
+        }
+        createUserWithEmailAndPassword(auth, mailAddress, password)
+        .then(() => {
+          // 新規会員登録フォームを初期化
+          registerMailAddressInput.value = '';
+          registerPasswordInput.value = '';
+        })
+        .catch((error) => {
+          alert('登録に失敗しました[' + error.message + ']');
+        });
+      });
+
+      // ログイン処理
+      const loginForm = document.getElementById('login-form');
+      const mailAddressInput = document.getElementById('mailAddress');
+      const passwordInput = document.getElementById('password');
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const mailAddress = mailAddressInput.value;
+        const password = passwordInput.value;
+        signInWithEmailAndPassword(auth, mailAddress, password)
+        .then(() => {
+          // ログインフォームを初期化
+          mailAddressInput.value = '';
+          passwordInput.value = '';
+        })
+        .catch((error) => {
+          alert('ログインに失敗しました[' + error.message + ']');
+        });
+      });
+
+      // ログアウト処理
+      const logoutButton = document.getElementById('logoutButton');
+      logoutButton.addEventListener('click', () => {
+        signOut(auth);
+      });
+
+      // ログイン周りの処理の各エリア
+      const userArea = document.getElementById('user-area');
+      const loginArea = document.getElementById('login-area');
+      const registerArea = document.getElementById('register-area');
+
+      // 認証状態の変更を画面に反映する
+      onAuthStateChanged(auth, (user) => {
+
+        // ログイン周りの処理の各エリアすべてを一旦非表示にする
+        userArea.style.display = 'none';
+        loginArea.style.display = 'none';
+        registerArea.style.display = 'none';
+
+        const userEmailText = document.getElementById('user-email-text');
+        if (user) {
+          userEmailText.innerText = user.email;
+          // ログインしている場合のエリアを表示する
+          userArea.style.display = 'block';
+        } else {
+          userEmailText.innerText = '';
+          // ログインしていない場合のエリアを表示する
+          loginArea.style.display = 'block';
+          registerArea.style.display = 'block';
+        }
+      });
     </script>
     <h1>あなたのいいところを診断します</h1>
     <input type="text" id="user-name" size="40" maxlength="60" placeholder="診断したい名前を入力してください。">
@@ -56,6 +131,41 @@
     <div id="scratch" style="display: none;">
       <p>こちらもどうぞ</p>
       <a href="https://scratch.mit.edu/projects/632524404" target="_blank" id="scratch-link">Scratchバージョン</a>
+    </div>
+    <div id="user-area">
+      <hr>
+      ようこそ<span id="user-email-text"></span> さん
+      <button id="logoutButton" class="btn2">ログアウト</button>
+    </div>
+    <div id="login-area">
+      <hr>
+      <h2>ログイン</h2>
+      <form action="#" id="login-form">
+        <div>
+          メールアドレス<input id="mailAddress" type="email" size="40" class="input2" required>
+        </div>
+        <div>
+          パスワード<input id="password" type="password" size="40" class="input2" required>
+        </div>
+        <p>
+          <button type="submit" class="btn2">ログイン</button>
+        </p>
+      </form>
+    </div>
+    <div id="register-area">
+      <hr>
+      <h2>新規会員登録</h2>
+      <form action="#" id="register-form">
+        <div>
+          メールアドレス<input id="registerMailAddress" type="email" size="40" class="input2" required>
+        </div>
+        <div>
+          パスワード<input id="registerPassword" type="password" size="40" class="input2" required>
+        </div>
+        <p>
+          <button type="submit" class="btn2">新規会員登録</button>
+        </p>
+      </form>
     </div>
     <script src="assessment.js"></script>
   </body>
